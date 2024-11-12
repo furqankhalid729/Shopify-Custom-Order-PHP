@@ -52,7 +52,8 @@ class ShopifyDataController extends Controller
         '700072', '700043', '700026', '700007', '700010', '700033', 
         '700024', '700014', '700015', '700088', '700088', '700001', 
         '700063', '700073', '700033', '700001', '700075', '700001', 
-        '700062', '700023', '700001', '700012'
+        '700062', '700023', '700001', '700012','700120','700121',
+        '700122', '700123', '700124', '700125','700126'
     ];
     public function orderData(Request $request)
     {
@@ -120,10 +121,13 @@ class ShopifyDataController extends Controller
                 ],
                 'financial_status' => 'paid',
                 'note' => $orderNotesString,
+                'phone' => "$phone"
             ],
         ];
+        Log::info('ORder data Before:', $orderData);
         //return response()->json($orderData);
         $response = $client->post('admin/api/2024-04/orders.json', $orderData);
+        Log::info('ORder data submit:', [$response->getBody()]);
         if ($response->getStatusCode() === 201) {
             $order = json_decode($response->getBody()->getContents(), true);
             return redirect('https://cashito.in/pages/thank-you?status=success');
