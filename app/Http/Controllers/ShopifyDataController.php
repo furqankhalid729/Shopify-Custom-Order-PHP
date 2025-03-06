@@ -112,6 +112,13 @@ class ShopifyDataController extends Controller
         if($city == "Mumbai"){
             $state =  "West Bengal";
         }
+        else if ($city == "Pune"){
+            $state =  "Maharashtra";
+        }
+        else if($city == "Hydrabad"){
+            $state =  "Telengana";
+        }
+        
         if (!in_array($zip, $this->validZipCodes)) {
             return redirect('https://cashito.in/pages/thank-you?status=zip-error');
         }
