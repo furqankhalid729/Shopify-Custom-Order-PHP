@@ -683,13 +683,13 @@ class ShopifyDataController extends Controller
             $state = "Telengana";
         }
 
-        if (!in_array($zip, $this->validZipCodes)) {
-            Log::info('zip code mismatch:', [$zip]);
-            return response()->json([
-                'status' => 'zip-error',
-                'redirect_url' => 'https://cashito.in/pages/thank-you?status=zip-error'
-            ], 200);
-        }
+        // if (!in_array($zip, $this->validZipCodes)) {
+        //     Log::info('zip code mismatch:', [$zip]);
+        //     return response()->json([
+        //         'status' => 'zip-error',
+        //         'redirect_url' => 'https://cashito.in/pages/thank-you?status=zip-error'
+        //     ], 200);
+        // }
 
         $excludeFields = ['name', 'email', 'phone', 'address', 'zip-code', 'city'];
         $orderNotes = [];
